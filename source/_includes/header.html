@@ -1,14 +1,32 @@
-<div class="subscribe">
-  <table>
-    <tr>
-      <td><span>Get Updates: &nbsp;</span></td>
-      <td><a href="#" onclick="window.open('{{site.subscribe_email}}','FeedBurner','menubar=no,width=600,height=600,toolbar=no'); return false;" class="btn"><i class="icon-envelope"></i> By Email</a></td>
-      <td><a href="{{site.subscribe_rss}}" class="btn"><i class="icon-cog"></i> By RSS</a></td>
-      <td><a href="http://twitter.com/{{site.twitter_user}}" class="btn"><i class="icon-twitter-sign"></i> On Twitter</a></td>
-    </tr>
-  </table>
+<h1 class="left"><a href="{{ root_url }}/">{{ site.title }}</a></h1>
+<nav class="menu left">{% include navigation.html %}</nav>
+<div class="right">
+	<form class="search right" action="{{ site.simple_search }}" method="get">
+		<input class="left" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:{{ site.url | shorthand_url }}">
+	</form>
+	<div class="social right">
+		{% if site.facebook_user %}
+		<a class="facebook" href="http://www.facebook.com/{{ site.facebook_user }}" title="Facebook">Facebook</a>
+		{% endif %}
+		{% if site.googleplus_user %}
+		<a class="google" href="https://plus.google.com/{{ site.googleplus_user }}" title="Google+">Google+</a>
+		{% endif %}
+		{% if site.twitter_user %}
+		<a class="twitter" href="http://twitter.com/{{ site.twitter_user }}" title="Twitter">Twitter</a>
+		{% endif %}
+		{% if site.github_user %}
+		<a class="github" href="https://github.com/{{ site.github_user }}" title="GitHub">GitHub</a>
+		{% endif %}
+		{% if site.pinterest_user %}
+		<a class="pinterest" href="https://pinterest.com/{{ site.pinterest_user }}" title="Pinterest">Pinterest</a>
+		{% endif %}
+		{% if site.delicious_user %}
+		<a class="delicious" href="http://delicious.com/{{ site.delicious_user }}" title="Delicious">Delicious</a>
+		{% endif %}
+		{% if site.subscribe_rss %}
+		<a class="rss" href="{{ site.subscribe_rss }}" title="RSS">RSS</a>
+		{% endif %}
+	</div>
 </div>
-<h1 class="title">{{ site.title }}</h1>
-{% if site.subtitle %}
-  <p class="lead">{{ site.subtitle }}</p>
-{% endif %}
+{% include custom/header.html %}
